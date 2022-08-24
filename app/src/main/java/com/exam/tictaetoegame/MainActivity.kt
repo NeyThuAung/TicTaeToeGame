@@ -24,43 +24,39 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         onClick()
-
     }
     fun onClick(){
         binding.tv1.setOnClickListener {
-             clickedBy1=checkUser(userTurn,binding.tv1)
-
+             clickedBy1=checkUser(binding.tv1)
         }
         binding.tv2.setOnClickListener {
-            clickedBy2=checkUser(userTurn,binding.tv2)
+            clickedBy2=checkUser(binding.tv2)
         }
         binding.tv3.setOnClickListener {
-            clickedBy3=checkUser(userTurn,binding.tv3)
+            clickedBy3=checkUser(binding.tv3)
         }
         binding.tv4.setOnClickListener {
-            clickedBy4=checkUser(userTurn,binding.tv4)
-
+            clickedBy4=checkUser(binding.tv4)
         }
         binding.tv5.setOnClickListener {
-            clickedBy5=checkUser(userTurn,binding.tv5)
+            clickedBy5=checkUser(binding.tv5)
         }
         binding.tv6.setOnClickListener {
-             clickedBy6=checkUser(userTurn,binding.tv6)
+             clickedBy6=checkUser(binding.tv6)
         }
         binding.tv7.setOnClickListener {
-             clickedBy7=checkUser(userTurn,binding.tv7)
+             clickedBy7=checkUser(binding.tv7)
         }
         binding.tv8.setOnClickListener {
-             clickedBy8=checkUser(userTurn,binding.tv8)
+             clickedBy8=checkUser(binding.tv8)
         }
         binding.tv9.setOnClickListener {
-            clickedBy9=checkUser(userTurn,binding.tv9)
+            clickedBy9=checkUser(binding.tv9)
         }
 
     }
-    fun checkUser(userTurn1 : Boolean,textchange:TextView) : Int{
+    fun checkUser(textchange:TextView) : Int{
         var clickedBy =0
         if (userTurn){
             textchange.text="X"

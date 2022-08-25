@@ -2,7 +2,6 @@ package com.exam.tictaetoegame
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.exam.tictaetoegame.databinding.ActivityMainBinding
@@ -10,15 +9,6 @@ import com.exam.tictaetoegame.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     var userTurn= true
     private lateinit var binding: ActivityMainBinding
-    var clickedBy1=0
-    var clickedBy2=0
-    var clickedBy3=0
-    var clickedBy4=0
-    var clickedBy5=0
-    var clickedBy6=0
-    var clickedBy7=0
-    var clickedBy8=0
-    var clickedBy9=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,69 +19,66 @@ class MainActivity : AppCompatActivity() {
     //onclicklistenerforTextView
     fun onClick(){
         binding.tv1.setOnClickListener {
-             clickedBy1=checkUser(binding.tv1)
+             checkUser(binding.tv1)
         }
         binding.tv2.setOnClickListener {
-            clickedBy2=checkUser(binding.tv2)
+            checkUser(binding.tv2)
         }
         binding.tv3.setOnClickListener {
-            clickedBy3=checkUser(binding.tv3)
+            checkUser(binding.tv3)
         }
         binding.tv4.setOnClickListener {
-            clickedBy4=checkUser(binding.tv4)
+            checkUser(binding.tv4)
         }
         binding.tv5.setOnClickListener {
-            clickedBy5=checkUser(binding.tv5)
+            checkUser(binding.tv5)
         }
         binding.tv6.setOnClickListener {
-             clickedBy6=checkUser(binding.tv6)
+             checkUser(binding.tv6)
         }
         binding.tv7.setOnClickListener {
-             clickedBy7=checkUser(binding.tv7)
+             checkUser(binding.tv7)
         }
         binding.tv8.setOnClickListener {
-             clickedBy8=checkUser(binding.tv8)
+             checkUser(binding.tv8)
         }
         binding.tv9.setOnClickListener {
-            clickedBy9=checkUser(binding.tv9)
+            checkUser(binding.tv9)
         }
 
     }
 
-    //use to check user turn
-    fun checkUser(textchange:TextView) : Int{
-        var clickedBy =0
+    //used to check user turn
+    fun checkUser(textchange:TextView){
         if (userTurn){
             textchange.text="X"
             userTurn=false
-            clickedBy=1
             textchange.isClickable= false
             //Toast.makeText(this, "$clickedBy", Toast.LENGTH_SHORT).show()
         }
         else{
             textchange.text="O"
             userTurn=true
-            clickedBy=2
             textchange.isClickable= false
         }
         checkWinner()
-        return clickedBy
 
     }
 
-    //use to check winner
+    //used to check winner
     fun checkWinner(){
+
+        val tv1=binding.tv1.text.toString()
+        val tv2=binding.tv2.text.toString()
+        val tv3=binding.tv3.text.toString()
+        val tv4=binding.tv4.text.toString()
+        val tv5=binding.tv5.text.toString()
+        val tv6=binding.tv6.text.toString()
+        val tv7=binding.tv7.text.toString()
+        val tv8=binding.tv8.text.toString()
+        val tv9=binding.tv9.text.toString()
+
         //vertical
-        var tv1=binding.tv1.text.toString()
-        var tv2=binding.tv2.text.toString()
-        var tv3=binding.tv3.text.toString()
-        var tv4=binding.tv4.text.toString()
-        var tv5=binding.tv5.text.toString()
-        var tv6=binding.tv6.text.toString()
-        var tv7=binding.tv7.text.toString()
-        var tv8=binding.tv8.text.toString()
-        var tv9=binding.tv9.text.toString()
-        
         if (tv1 == tv4 && tv4==tv7 && tv1!="" ){
                 Toast.makeText(this, "Player $tv1 Won", Toast.LENGTH_SHORT).show()
                 clearText()
@@ -101,16 +88,6 @@ class MainActivity : AppCompatActivity() {
             clearText()
         }
         else if (tv3 == tv6 && tv6==tv9 && tv3!="" ){
-            Toast.makeText(this, "Player $tv3 Won", Toast.LENGTH_SHORT).show()
-            clearText()
-        }
-        //diagonal
-        else if (tv1 == tv5 && tv5==tv9 && tv1!="" ){
-            Toast.makeText(this, "Player $tv1 Won", Toast.LENGTH_SHORT).show()
-            clearText()
-
-        }
-        else if (tv3 == tv5 && tv5==tv7 && tv3!="" ){
             Toast.makeText(this, "Player $tv3 Won", Toast.LENGTH_SHORT).show()
             clearText()
         }
@@ -127,6 +104,17 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Player $tv9 Won", Toast.LENGTH_SHORT).show()
             clearText()
         }
+        //diagonal
+        else if (tv1 == tv5 && tv5==tv9 && tv1!="" ){
+            Toast.makeText(this, "Player $tv1 Won", Toast.LENGTH_SHORT).show()
+            clearText()
+
+        }
+        else if (tv3 == tv5 && tv5==tv7 && tv3!="" ){
+            Toast.makeText(this, "Player $tv3 Won", Toast.LENGTH_SHORT).show()
+            clearText()
+        }
+        //draw
         else if (
             tv1!="" &&
             tv2!="" &&
@@ -141,10 +129,9 @@ class MainActivity : AppCompatActivity() {
             clearText()
             Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show()
         }
-
     }
 
-    //Use to clear text
+    //Used to clear text
     fun clearText(){
         binding.tv1.text=""
         binding.tv2.text=""
@@ -155,7 +142,6 @@ class MainActivity : AppCompatActivity() {
         binding.tv7.text=""
         binding.tv8.text=""
         binding.tv9.text=""
-
         binding.tv1.isClickable=true
         binding.tv2.isClickable=true
         binding.tv3.isClickable=true

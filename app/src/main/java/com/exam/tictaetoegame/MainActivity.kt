@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.exam.tictaetoegame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var userTurn= true
+    private var userTurn= true
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         onClick()
     }
-    //onclicklistenerforTextView
-    fun onClick(){
+    //onclicklistenerfor TextView
+    private fun onClick(){
         binding.tv1.setOnClickListener {
              checkUser(binding.tv1)
         }
@@ -49,24 +49,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     //used to check user turn
-    fun checkUser(textchange:TextView){
+    private fun checkUser(textChange:TextView){
         if (userTurn){
-            textchange.text="X"
+            textChange.text="X"
             userTurn=false
-            textchange.isClickable= false
+            textChange.isClickable= false
             //Toast.makeText(this, "$clickedBy", Toast.LENGTH_SHORT).show()
         }
         else{
-            textchange.text="O"
+            textChange.text="O"
             userTurn=true
-            textchange.isClickable= false
+            textChange.isClickable= false
         }
         checkWinner()
 
     }
 
     //used to check winner
-    fun checkWinner(){
+    private fun checkWinner(){
 
         val tv1=binding.tv1.text.toString()
         val tv2=binding.tv2.text.toString()
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Used to clear text
-    fun clearText(){
+    private fun clearText(){
         binding.tv1.text=""
         binding.tv2.text=""
         binding.tv3.text=""

@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         onClick()
     }
+    //onclicklistenerforTextView
     fun onClick(){
         binding.tv1.setOnClickListener {
              clickedBy1=checkUser(binding.tv1)
@@ -56,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    //use to check user turn
     fun checkUser(textchange:TextView) : Int{
         var clickedBy =0
         if (userTurn){
@@ -75,6 +78,8 @@ class MainActivity : AppCompatActivity() {
         return clickedBy
 
     }
+
+    //use to check winner
     fun checkWinner(){
         //vertical
         var tv1=binding.tv1.text.toString()
@@ -138,6 +143,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    //Use to clear text
     fun clearText(){
         binding.tv1.text=""
         binding.tv2.text=""
@@ -149,8 +156,6 @@ class MainActivity : AppCompatActivity() {
         binding.tv8.text=""
         binding.tv9.text=""
 
-
-
         binding.tv1.isClickable=true
         binding.tv2.isClickable=true
         binding.tv3.isClickable=true
@@ -161,7 +166,5 @@ class MainActivity : AppCompatActivity() {
         binding.tv8.isClickable=true
         binding.tv9.isClickable=true
 
-
-        
     }
 }
